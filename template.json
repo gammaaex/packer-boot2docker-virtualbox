@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "os_version": "18.09.1",
+    "iso_checksum": "d1993968bc4e44be522ad4d9db5632dfd0c146715ae294c82a6075e83be49b881c5c6c9643462929292c1a2317649ddda4a2d1f870892d32e2b4148deb2d0369"
+  },
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Linux_64",
+      "iso_url": "https://github.com/boot2docker/boot2docker/releases/download/v{{user `os_version`}}/boot2docker.iso",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "sha512",
+      "ssh_username": "docker",
+      "ssh_password": "tcuser",
+      "shutdown_command": "sudo shutdown -h now",
+      "boot_wait": "5s",
+      "guest_additions_mode": "attach",
+      "bundle_iso": true,
+      "memory": 1024,
+      "disk_size": "32000",
+      "format": "ova",
+      "headless": false
+    }
+  ],
+  "provisioners": [],
+  "post-processors": []
+}
